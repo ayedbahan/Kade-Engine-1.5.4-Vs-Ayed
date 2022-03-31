@@ -708,7 +708,7 @@ class PlayState extends MusicBeatState
 								add(waveSprite);
 								add(waveSpriteFG);
 						*/
-			}
+                                }
 			case 'stage':
 				{
 						defaultCamZoom = 0.9;
@@ -736,9 +736,9 @@ class PlayState extends MusicBeatState
 	
 						add(stageCurtains);
 
-             }
+                        }
 			case 'mamar': //Week MAMAR
-		     {
+		        {
 				defaultCamZoom = 0.7;
 				curStage = 'mamar';
 				var bg:BGSprite = new BGSprite('mamarbg0', 0, 0, 0.7, 0.8);
@@ -3406,8 +3406,6 @@ class PlayState extends MusicBeatState
 			public var fuckingVolume:Float = 1;
 			public var useVideo = false;
 
-			public static var webmHandler:WebmHandler;
-
 			public var playingDathing = false;
 
 			public var videoSprite:FlxSprite;
@@ -3433,7 +3431,7 @@ class PlayState extends MusicBeatState
 			}
 
 
-			public function backgroundVideo(source:String) // for background videos
+			/*public function backgroundVideo(source:String) // for background videos
 				{
 					#if cpp
 					useVideo = true;
@@ -3487,7 +3485,7 @@ class PlayState extends MusicBeatState
 					else
 						webmHandler.resume();
 					#end
-				}
+				}*/
 
 	function noteMiss(direction:Int = 1, daNote:Note):Void
 	{
