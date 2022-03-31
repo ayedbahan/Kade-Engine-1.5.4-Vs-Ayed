@@ -28,9 +28,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['freeplay', 'donate', 'options'];
+	var optionShit:Array<String> = ['storymode', 'freeplay', 'donate', 'options'];
 	#else
-	var optionShit:Array<String> = ['freeplay'];
+	var optionShit:Array<String> = ['storymode', 'freeplay'];
 	#end
 
 	var newGaming:FlxText;
@@ -130,7 +130,7 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-        #if android
+                #if android
 		addVirtualPad(UP_DOWN, A_B);
 		#end
 
@@ -164,13 +164,13 @@ class MainMenuState extends MusicBeatState
 				}
 			}
 
-			if (FlxG.keys.justPressed.UP)
+			if (controls.UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(-1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN)
+			if (controls.DOWN_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(1);
