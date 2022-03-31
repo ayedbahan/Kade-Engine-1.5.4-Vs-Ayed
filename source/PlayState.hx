@@ -736,60 +736,6 @@ class PlayState extends MusicBeatState
 	
 						add(stageCurtains);
 
-                        }
-			case 'mamar': //Week MAMAR
-		        {
-				defaultCamZoom = 0.7;
-				curStage = 'mamar';
-				var bg:BGSprite = new BGSprite('mamarbg0', 0, 0, 0.7, 0.8);
-				bg.screenCenter(XY);
-				add(bg);
-
-				bgred = new BGSprite('mamarbg0red', 0, 0, 0.7, 0.8);
-				bgred.screenCenter(XY);
-				add(bgred);
-				bgred.alpha = 0;
-				
-
-				gordin = new FlxSprite(310, 150);
-				gordin.frames = Paths.getSparrowAtlas('1st', 'week3');
-				gordin.animation.addByPrefix('bop', "1stdance", 24, false); 
-				gordin.animation.play('bop', true);
-				gordin.scrollFactor.set(0.8, 0.85);
-				gordin.antialiasing = true;
-				add(gordin);
-				gordin.alpha = 0;
-
-				menina = new FlxSprite(0, 180);
-				menina.frames = Paths.getSparrowAtlas('PLAY', 'week3');
-				menina.animation.addByPrefix('bop', "playtimedance", 24, false); 
-				menina.animation.play('bop', true);
-				menina.scrollFactor.set(0.8, 0.85);
-				menina.antialiasing = true;
-				add(menina);
-				menina.alpha = 0;
-
-				veio = new FlxSprite(800, 100);
-				veio.frames = Paths.getSparrowAtlas('BALDI', 'week3');
-				veio.animation.addByPrefix('bop', "baldidance", 24, false); 
-				veio.animation.play('bop', true);
-				veio.scrollFactor.set(0.8, 0.85);
-				veio.antialiasing = true;
-				add(veio);
-				veio.alpha = 0;
-
-				dabg = new BGSprite('mamarbg1', 0, 0, 0.9, 0.9);
-				dabg.screenCenter(XY);
-				
-				
-
-				redbg = new BGSprite('mamarbg2', 0, 0, 0.9, 0.9);
-				redbg.screenCenter(XY);
-				
-				redbg.alpha = 0;
-
-				gfGroup.alpha = 0;
-
 				}
 			default:
 			{
