@@ -259,22 +259,22 @@ class StoryMenuState extends MusicBeatState
 					}
 				}
 
-				if (FlxG.keys.justPressed.UP)
+				if (controls.UP_P)
 				{
 					changeWeek(-1);
 				}
 
-				if (FlxG.keys.justPressed.DOWN)
+				if (controls.DOWN_P)
 				{
 					changeWeek(1);
 				}
 
-				if (controls.RIGHT)
+				if (controls.RIGHT_P)
 					rightArrow.animation.play('press')
 				else
 					rightArrow.animation.play('idle');
 
-				if (controls.LEFT)
+				if (controls.LEFT_P)
 					leftArrow.animation.play('press');
 				else
 					leftArrow.animation.play('idle');
