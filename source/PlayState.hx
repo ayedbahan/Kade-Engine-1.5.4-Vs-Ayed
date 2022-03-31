@@ -1501,8 +1501,8 @@ class PlayState extends MusicBeatState
 			default: allowedToHeadbang = false;
 		}
 
-		if (useVideo)
-			GlobalVideo.get().resume();
+		/*if (useVideo)
+			GlobalVideo.get().resume();*/
 		
 		#if windows
 		// Updating Discord Rich Presence (with Time Left)
@@ -1896,7 +1896,7 @@ class PlayState extends MusicBeatState
 			camHUD.visible = !camHUD.visible;
 
 
-		if (useVideo && GlobalVideo.get() != null && !stopUpdate)
+		/*if (useVideo && GlobalVideo.get() != null && !stopUpdate)
 			{		
 				if (GlobalVideo.get().ended && !removedVideo)
 				{
@@ -1905,7 +1905,7 @@ class PlayState extends MusicBeatState
 					FlxG.stage.window.onFocusIn.remove(focusIn);
 					removedVideo = true;
 				}
-			}
+			}*/
 
 
 		
@@ -2035,14 +2035,14 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.SEVEN)
 		{
-			if (useVideo)
+			/*if (useVideo)
 				{
 					GlobalVideo.get().stop();
 					remove(videoSprite);
 					FlxG.stage.window.onFocusOut.remove(focusOut);
 					FlxG.stage.window.onFocusIn.remove(focusIn);
 					removedVideo = true;
-				}
+				}*/
 			#if windows
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
@@ -2089,14 +2089,14 @@ class PlayState extends MusicBeatState
 		#if debug
 		if (FlxG.keys.justPressed.SIX)
 		{
-			if (useVideo)
+			/*if (useVideo)
 				{
 					GlobalVideo.get().stop();
 					remove(videoSprite);
 					FlxG.stage.window.onFocusOut.remove(focusOut);
 					FlxG.stage.window.onFocusIn.remove(focusIn);
 					removedVideo = true;
-				}
+				}*/
 
 			FlxG.switchState(new AnimationDebug(SONG.player2));
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN,handleInput);
@@ -2667,13 +2667,13 @@ class PlayState extends MusicBeatState
 	function endSong():Void
 	{
 		FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN,handleInput);
-		if (useVideo)
+		/*if (useVideo)
 			{
 				GlobalVideo.get().stop();
 				FlxG.stage.window.onFocusOut.remove(focusOut);
 				FlxG.stage.window.onFocusIn.remove(focusIn);
 				PlayState.instance.remove(PlayState.instance.videoSprite);
-			}
+			}*/
 
 		if (isStoryMode)
 			campaignMisses = misses;
