@@ -37,8 +37,8 @@ class PauseSubState extends MusicBeatSubstate
 		if (PlayState.instance.useVideo)
 		{
 			menuItems.remove("Resume");
-			if (GlobalVideo.get().playing)
-				GlobalVideo.get().pause();
+			/*if (GlobalVideo.get().playing)
+				GlobalVideo.get().pause();*/
 		}
 
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);
@@ -215,7 +215,6 @@ class PauseSubState extends MusicBeatSubstate
 				case "Restart Song":
 					if (PlayState.instance.useVideo)
 					{
-						GlobalVideo.get().stop();
 						PlayState.instance.remove(PlayState.instance.videoSprite);
 						PlayState.instance.removedVideo = true;
 					}
@@ -223,7 +222,6 @@ class PauseSubState extends MusicBeatSubstate
 				case "Exit to menu":
 					if (PlayState.instance.useVideo)
 					{
-						GlobalVideo.get().stop();
 						PlayState.instance.remove(PlayState.instance.videoSprite);
 						PlayState.instance.removedVideo = true;
 					}
