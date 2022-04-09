@@ -184,6 +184,8 @@ class PlayState extends MusicBeatState
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
+	var a1:FlxSprite;
+	var a2:FlxSprite;
 	var starz:FlxSprite;
 	var bg1:FlxSprite;
 	var bg:FlxSprite;
@@ -747,12 +749,12 @@ class PlayState extends MusicBeatState
 			case 'space':
 			{
 				bg = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Space'));
-				bg.antialiasing = antialiasing = true;
+				bg.antialiasing.antialiasing = true;
 				bg.scrollFactor.set(0.3, 0.3);
 				add(bg);
 
 				bg1 = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Stars'));
-				bg1.antialiasing = antialiasing = true;
+				bg1.antialiasing.antialiasing = true;
 				bg1.scrollFactor.set(0.3, 0.3);
 				add(bg1);
 				new FlxTimer().start(5, function (tmrr:FlxTimer)
@@ -761,18 +763,18 @@ class PlayState extends MusicBeatState
 				});
 
 				a1 = new FlxSprite(900, -190).loadGraphic(Paths.image('bg/a1'));
-				a1.antialiasing = antialiasing = true;
+				a1.antialiasing.antialiasing = true;
 				a1.scrollFactor.set(0.3, 0.3);
 				add(a1);
 
 				a2 = new FlxSprite(-150, -35).loadGraphic(Paths.image('bg/a2'));
-				a2.antialiasing = antialiasing = true;
+				a2.antialiasing.antialiasing = true;
 				a2.scrollFactor.set(0.3, 0.3);
 				add(a2);
 
 				starz = new FlxSprite(-180,-120);
 				starz.frames = Paths.getSparrowAtlas('bg/starz');
-				starz.antialiasing = antialiasing = true;
+				starz.antialiasing.antialiasing = true;
 				starz.animation.addByPrefix('weee', "shootinstarz", 24, false);
 				starz.scrollFactor.set(0.2, 0.2);
 				starz.updateHitbox();
@@ -816,7 +818,7 @@ class PlayState extends MusicBeatState
 				add(thanksText);
 
 				var bg0:FlxSprite = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/bg0'));
-				bg0.antialiasing = antialiasing = true;
+				bg0.antialiasing.antialiasing = true;
 				add(bg0);
 
 				FlxTween.tween(a2,{"y":-30},8,{type:PINGPONG});
@@ -3926,7 +3928,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.57;
 					});
 				case 1463:
-					if(PlayStateChangeables .downScroll) {
+					if(PlayStateChangeables .useDownscroll) {
 						FlxTween.tween(healthBarBG,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
 						FlxTween.tween(healthBar,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
 						FlxTween.tween(iconP1,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
