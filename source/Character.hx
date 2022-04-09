@@ -139,6 +139,23 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+
+			case 'sans':
+				tex = Paths.getSparrowAtlas('characters/Fallen_Stars_Sans', 'shared');
+				frames = tex;
+				animation.addByPrefix('idle', 'Sans idle', 24);
+				animation.addByPrefix('singUP', 'Sans Up', 24);
+				animation.addByPrefix('singRIGHT', 'Sans Rigth', 24);
+				animation.addByPrefix('singDOWN', 'Sans Down', 24);
+				animation.addByPrefix('singLEFT', 'Sans Left', 24);
+
+				addOffset('idle', 0, -90);
+				addOffset("singUP", 14, -75);
+				addOffset("singRIGHT", -2, -78);
+				addOffset("singLEFT", 68, -103);
+				addOffset("singDOWN", 2, -106);
+
+				playAnim('idle');
 				
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('characters/spooky_kids_assets');
