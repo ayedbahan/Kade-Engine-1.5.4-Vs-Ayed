@@ -748,6 +748,7 @@ class PlayState extends MusicBeatState
 						}
 			case 'space':
 			{
+			    defaultCamZoom = 0.57;
 				bg = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Space'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.3, 0.3);
@@ -901,6 +902,9 @@ class PlayState extends MusicBeatState
 				dad.y += 200;
 			case "monster":
 				dad.y += 100;
+			case 'sans':
+				dad.x += 120;
+				dad.y += 480;
 			case 'monster-christmas':
 				dad.y += 130;
 			case 'dad':
@@ -945,6 +949,11 @@ class PlayState extends MusicBeatState
 			case 'mallEvil':
 				boyfriend.x += 320;
 				dad.y -= 80;
+			case 'space':
+				boyfriend.x += 900;
+				boyfriend.y += 450;
+				gf.x += 400;
+				gf.y += 330;
 			case 'school':
 				boyfriend.x += 200;
 				boyfriend.y += 220;
@@ -3979,6 +3988,12 @@ class PlayState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
+		
+	if (curSong == 'Our Broken Constellations' && curBeat >= 1472 && curBeat < 1856 && camZooming && FlxG.camera.zoom < 1.35)
+		{
+			FlxG.camera.zoom += 0.20;
+			camHUD.zoom += 0.08;
+		}
 
 		if (generatedMusic)
 		{
