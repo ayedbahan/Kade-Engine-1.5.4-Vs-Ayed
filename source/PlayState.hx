@@ -183,6 +183,11 @@ class PlayState extends MusicBeatState
 	var upperBoppers:FlxSprite;
 	var bottomBoppers:FlxSprite;
 	var santa:FlxSprite;
+	var starz:FlxSprite;
+	var bg1:FlxSprite;
+	var bg:FlxSprite;
+	var alphaText:FlxText;
+	var thanksText:FlxText;
 
 	var fc:Bool = true;
 
@@ -735,6 +740,84 @@ class PlayState extends MusicBeatState
 						stageCurtains.active = false;
 	
 						add(stageCurtains);
+						}
+			case 'space':
+			{
+				bg = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Space'));
+				bg.antialiasing = ClientPrefs.globalAntialiasing;
+				bg.scrollFactor.set(0.3, 0.3);
+				add(bg);
+
+				bg1 = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Stars'));
+				bg1.antialiasing = ClientPrefs.globalAntialiasing;
+				bg1.scrollFactor.set(0.3, 0.3);
+				add(bg1);
+				new FlxTimer().start(5, function (tmrr:FlxTimer)
+				{
+					FlxTween.tween(bg1, {alpha: 0}, 5, {type:PINGPONG});
+				});
+
+				a1 = new FlxSprite(900, -190).loadGraphic(Paths.image('bg/a1'));
+				a1.antialiasing = ClientPrefs.globalAntialiasing;
+				a1.scrollFactor.set(0.3, 0.3);
+				add(a1);
+
+				a2 = new FlxSprite(-150, -35).loadGraphic(Paths.image('bg/a2'));
+				a2.antialiasing = ClientPrefs.globalAntialiasing;
+				a2.scrollFactor.set(0.3, 0.3);
+				add(a2);
+
+				starz = new FlxSprite(-180,-120);
+				starz.frames = Paths.getSparrowAtlas('bg/starz');
+				starz.antialiasing = ClientPrefs.globalAntialiasing;
+				starz.animation.addByPrefix('weee', "shootinstarz", 24, false);
+				starz.scrollFactor.set(0.2, 0.2);
+				starz.updateHitbox();
+				add(starz);
+				starz.animation.play('weee', true);
+
+				blackFuck = new FlxSprite().makeGraphic(1280, 720, FlxColor.BLACK);
+				blackFuck.cameras = [camHUD];
+				blackFuck.screenCenter(X);
+				add(blackFuck);
+
+				new FlxTimer().start(1, function (tmrr:FlxTimer)
+				{
+					FlxTween.tween(blackFuck, {alpha: 0}, 1, {type:PINGPONG});
+				});
+
+				blackFuck2 = new FlxSprite().makeGraphic(1280, 720, FlxColor.BLACK);
+				blackFuck2.cameras = [camOther];
+				blackFuck2.alpha = 0;
+				blackFuck2.screenCenter(X);
+				add(blackFuck2);
+
+				alphaText = new FlxText(20, FlxG.height - 40, 0, "ALPHA", 32);
+				alphaText.scrollFactor.set();
+				alphaText.cameras = [camHUD];
+				alphaText.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				alphaText.x = FlxG.width - (alphaText.width + 20);
+				alphaText.alpha = 0.7;
+				alphaText.updateHitbox();
+				add(alphaText);
+
+				thanksText = new FlxText("THANKS FOR PLAYING ALPHA!!", 32);
+				thanksText.scrollFactor.set();
+				thanksText.cameras = [camOther];
+				thanksText.setFormat(Paths.font('vcr.ttf'), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+				thanksText.scale.set(1.5, 1.5);
+				thanksText.screenCenter(X);
+				thanksText.screenCenter(Y);
+				thanksText.updateHitbox();
+				thanksText.alpha = 0;	
+				add(thanksText);
+
+				var bg0:FlxSprite = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/bg0'));
+				bg0.antialiasing = ClientPrefs.globalAntialiasing;
+				add(bg0);
+
+				FlxTween.tween(a2,{"y":-30},8,{type:PINGPONG});
+				FlxTween.tween(a1,{"y":-30},8,{type:PINGPONG});
 
 				}
 			default:
@@ -2328,6 +2411,12 @@ class PlayState extends MusicBeatState
 					case 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
+					case 'space':
+					camFollow.x = boyfriend.getMidpoint().x - 250;
+					camFollow.y = boyfriend.getMidpoint().y - 300;
+			}
+			camFollow.x -= boyfriend.cameraPosition[0];
+			camFollow.y += boyfriend.cameraPosition[1];
 				}
 			}
 		}
@@ -3795,6 +3884,79 @@ class PlayState extends MusicBeatState
 			luaModchart.executeState('stepHit',[curStep]);
 		}
 		#end
+		
+	if (curStage == 'space' && curSong == 'Our Broken Constellations') {
+			switch (curStep) {
+				case 156:
+					FlxG.camera.flash(FlxColor.BLACK, 1);
+					blackFuck.visible = false;
+				case 287:
+					FlxTween.tween(FlxG.camera, {zoom: 0.7}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.7;
+					});
+				case 351:
+					FlxTween.tween(FlxG.camera, {zoom: 0.57}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.57;
+					});
+				case 936:
+					FlxTween.tween(FlxG.camera, {zoom: 0.9}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.9;
+					});
+					FlxG.camera.flash(FlxColor.BLACK, 1);
+					blackFuck.visible = true;
+				case 1071:
+					FlxTween.tween(FlxG.camera, {zoom: 0.7}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.7;
+					});
+				case 1199:
+					FlxG.camera.flash(FlxColor.BLACK, 1);
+					blackFuck.visible = false;
+				case 1200:
+					FlxTween.tween(FlxG.camera, {zoom: 0.57}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.57;
+					});
+				case 1463:
+					if(ClientPrefs.downScroll) {
+						FlxTween.tween(healthBarBG,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(healthBar,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(iconP1,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(iconP2,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(scoreTxt,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
+					} else {
+						FlxTween.tween(healthBarBG,{"y":900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(healthBar,{"y":900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(iconP1,{"y":900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(iconP2,{"y":900},0.9,{ease: FlxEase.elasticInOut});
+						FlxTween.tween(scoreTxt,{"y":900},0.9,{ease: FlxEase.elasticInOut});
+					}
+					FlxTween.tween(FlxG.camera, {zoom: 0.9}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.9;
+					});
+				case 1857:
+					FlxG.camera.flash(FlxColor.BLACK, 1);
+					blackFuck.visible = true;
+					FlxTween.tween(FlxG.camera, {zoom: 0.7}, 1, {ease: FlxEase.quadInOut});
+					new FlxTimer().start(1 , function(tmr:FlxTimer)
+					{
+						defaultCamZoom = 0.7;
+					});
+				case 2112:
+					FlxTween.tween(blackFuck2, {alpha: 1}, 1);
+					FlxTween.tween(thanksText, {alpha: 1}, 1);
+			}
+		}
 
 		// yes this updates every step.
 		// yes this is bad
@@ -3910,6 +4072,15 @@ class PlayState extends MusicBeatState
 					upperBoppers.animation.play('bop', true);
 					bottomBoppers.animation.play('bop', true);
 					santa.animation.play('idle', true);
+				}
+				
+			case 'space':
+				if (!trainMoving)
+					trainCooldown += 1;
+
+				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8) {
+					trainCooldown = FlxG.random.int(-4, 0);
+					starz.animation.play('weee', true);
 				}
 
 			case 'limo':
