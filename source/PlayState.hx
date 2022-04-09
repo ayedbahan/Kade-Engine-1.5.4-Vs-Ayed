@@ -748,7 +748,7 @@ class PlayState extends MusicBeatState
 						}
 			case 'space':
 			{
-			    defaultCamZoom = 0.57;
+				defaultCamZoom = 0.57;
 				bg = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Space'));
 				bg.antialiasing = true;
 				bg.scrollFactor.set(0.3, 0.3);
@@ -2777,15 +2777,6 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode)
 			campaignMisses = misses;
-
-		if (!loadRep)
-			rep.SaveReplay(saveNotes, saveJudge, replayAna);
-		else
-		{
-			PlayStateChangeables.botPlay = false;
-			PlayStateChangeables.scrollSpeed = 1;
-			PlayStateChangeables.useDownscroll = false;
-		}
 
 		if (FlxG.save.data.fpsCap > 290)
 			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(290);
