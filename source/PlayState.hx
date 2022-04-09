@@ -2414,9 +2414,6 @@ class PlayState extends MusicBeatState
 					case 'space':
 					camFollow.x = boyfriend.getMidpoint().x - 250;
 					camFollow.y = boyfriend.getMidpoint().y - 300;
-			}
-			camFollow.x -= boyfriend.cameraPosition[0];
-			camFollow.y += boyfriend.cameraPosition[1];
 				}
 			}
 		}
