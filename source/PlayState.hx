@@ -161,6 +161,7 @@ class PlayState extends MusicBeatState
 	public var iconP2:HealthIcon; //what could go wrong?
 	public var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
+	public var camOther:FlxCamera;
 
 	public static var offsetTesting:Bool = false;
 
@@ -188,6 +189,8 @@ class PlayState extends MusicBeatState
 	var bg:FlxSprite;
 	var alphaText:FlxText;
 	var thanksText:FlxText;
+	var blackFuck:FlxSprite;
+	var blackFuck2:FlxSprite;
 
 	var fc:Bool = true;
 
@@ -744,12 +747,12 @@ class PlayState extends MusicBeatState
 			case 'space':
 			{
 				bg = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Space'));
-				bg.antialiasing = ClientPrefs.globalAntialiasing;
+				bg.antialiasing = antialiasing = true;
 				bg.scrollFactor.set(0.3, 0.3);
 				add(bg);
 
 				bg1 = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/Stars'));
-				bg1.antialiasing = ClientPrefs.globalAntialiasing;
+				bg1.antialiasing = antialiasing = true;
 				bg1.scrollFactor.set(0.3, 0.3);
 				add(bg1);
 				new FlxTimer().start(5, function (tmrr:FlxTimer)
@@ -758,18 +761,18 @@ class PlayState extends MusicBeatState
 				});
 
 				a1 = new FlxSprite(900, -190).loadGraphic(Paths.image('bg/a1'));
-				a1.antialiasing = ClientPrefs.globalAntialiasing;
+				a1.antialiasing = antialiasing = true;
 				a1.scrollFactor.set(0.3, 0.3);
 				add(a1);
 
 				a2 = new FlxSprite(-150, -35).loadGraphic(Paths.image('bg/a2'));
-				a2.antialiasing = ClientPrefs.globalAntialiasing;
+				a2.antialiasing = antialiasing = true;
 				a2.scrollFactor.set(0.3, 0.3);
 				add(a2);
 
 				starz = new FlxSprite(-180,-120);
 				starz.frames = Paths.getSparrowAtlas('bg/starz');
-				starz.antialiasing = ClientPrefs.globalAntialiasing;
+				starz.antialiasing = antialiasing = true;
 				starz.animation.addByPrefix('weee', "shootinstarz", 24, false);
 				starz.scrollFactor.set(0.2, 0.2);
 				starz.updateHitbox();
@@ -813,7 +816,7 @@ class PlayState extends MusicBeatState
 				add(thanksText);
 
 				var bg0:FlxSprite = new FlxSprite(-600,-200).loadGraphic(Paths.image('bg/bg0'));
-				bg0.antialiasing = ClientPrefs.globalAntialiasing;
+				bg0.antialiasing = antialiasing = true;
 				add(bg0);
 
 				FlxTween.tween(a2,{"y":-30},8,{type:PINGPONG});
@@ -3923,7 +3926,7 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.57;
 					});
 				case 1463:
-					if(ClientPrefs.downScroll) {
+					if(PlayStateChangeables .downScroll) {
 						FlxTween.tween(healthBarBG,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
 						FlxTween.tween(healthBar,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
 						FlxTween.tween(iconP1,{"y":-900},0.9,{ease: FlxEase.elasticInOut});
